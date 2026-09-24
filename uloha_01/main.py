@@ -1,24 +1,16 @@
-from typing import List, Set, Any
+import time
 
-class UniquenessChecker:
+data = ["jablko", "banán", "jablko", "pomeranč"]
+set_result = set(data)
 
-    @staticmethod
-    def preserve_order_unique(items: List[Any]) -> List[Any]:
-        seen: Set[Any] = set()
-        result: List[Any] = []
-        for item in items:
-            if item not in seen:
-                seen.add(item)
-                result.append(item)
-        return result
+seen = set()
+ordered_result = []
+for item in data:
+    if item not in seen:
+        seen.add(item)
+        ordered_result.append(item)
 
-def main() -> None:
-    data = ['jablko', 'banán', 'jablko', 'pomeranč']
-    set_result = set(data)
-    ordered_result = UniquenessChecker.preserve_order_unique(data)
-    print(f'Původní data: {data}')
-    print(f'Set (neumožňuje zachovat jistotu pořadí): {set_result}')
-    print(f'List se zachováním pořadí: {ordered_result}')
-    print('Závěr: Set NENÍ vždy vhodnější než list (např. když záleží na pořadí).')
-if __name__ == '__main__':
-    main()
+print("Původní data:", data)
+print("Set (poradi se nemusi zachovat):", set_result)
+print("List se zachovanim poradi:", ordered_result)
+print("Závěr: Set NENÍ vždy vhodnější než list.")
