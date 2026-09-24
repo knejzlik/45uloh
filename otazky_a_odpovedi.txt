@@ -1,0 +1,181 @@
+OTÁZKY A ODPOVĚDI - 45 ÚLOH Z PYTHON KOLEKCÍ
+
+1. Pokud potřebujeme uchovat každý vložený prvek právě jednou, je set vždy vhodnější než list.
+Odpověď: NE
+Vysvětlení: Není "vždy" vhodnější. Například pokud potřebujeme zachovat pořadí vkládání prvků nebo ukládat objekty, které nejsou hashovatelné (např. vnořené seznamy či slovníky), set použít nelze.
+
+2. Pokud objekt můžeme vložit do list, můžeme ho vložit také do set.
+Odpověď: NE
+Vysvětlení: Do setu lze vložit pouze hashovatelné (immutable) objekty (např. int, str, tuple). Měnitelné (mutable) objekty jako list nebo dict do setu vložit nelze. Do listu lze vložit jakýkoliv objekt.
+
+3. tuple je neměnný.
+Odpověď: ANO
+Vysvětlení: Tuple je v Pythonu immutable datový typ. Po jeho vytvoření nelze měnit jeho velikost ani nahrazovat prvky na daných indexech jinými objekty.
+
+4. Pokud odstraníme první prvek z list, ostatní prvky mohou mít jiné indexy než před odstraněním.
+Odpověď: ANO
+Vysvětlení: Odstraněním prvku na indexu 0 se všechny následující prvky posunou o jednu pozici doleva (jejich index se zmenší o 1).
+
+5. dictionary lze použít jako náhradu list bez ztráty jakékoli vlastnosti list.
+Odpověď: NE
+Vysvětlení: List je sekvence s souvislým celočíselným indexováním od 0 do n-1, podporuje slicování (výřezy) a má odlišné paměťové i operační vlastnosti. Slovník indexování pozicemi nativně neposkytuje.
+
+6. Dva set mohou být stejné, přestože jejich prvky byly vloženy v jiném pořadí.
+Odpověď: ANO
+Vysvětlení: Množina (set) je neuspořádaná kolekce unikátních prvků. Dvě množiny se rovnají (set1 == set2), pokud obsahují stejné prvky, bez ohledu na pořadí jejich vložení.
+
+7. Pokud potřebujeme opakovaně zjišťovat pouze to, zda už jsme nějakou hodnotu viděli, může být set vhodnější než list.
+Odpověď: ANO
+Vysvětlení: Vyhledávání prvku v setu pomocí operátoru `in` má průměrnou časovou složitost O(1), zatímco u listu je složitost O(n). Pro časté dotazy je set výrazně efektivnější.
+
+8. Pokud list obsahuje pouze unikátní hodnoty, má vlastně stejné vlastnosti jako set a je jedno který použijeme.
+Odpověď: NE
+Vysvětlení: List si na rozdíl od setu udržuje pořadí prvků, umožňuje indexování, a při vyhledávání operátorem `in` má časovou složitost O(n) oproti O(1) u setu.
+
+9. dictionary umožňuje vypsat první prvek pomocí indexu 0.
+Odpověď: NE
+Vysvětlení: Zápis `dict[0]` přistupuje k položce s klíčem `0`, nikoli k první položce podle pořadí. Pokud klíč `0` ve slovníku neexistuje, vyvolá se výjimka KeyError.
+
+10. Pokud známe hodnotu prvku, ale neznáme jeho pozici, poskytuje list vždy stejně asymptoticky stejně efektivní přístup jako set.
+Odpověď: NE
+Vysvětlení: Hledání hodnoty v listu bez znalosti pozice vyžaduje průchod prvků (složitost O(n)), zatímco set využívá hashovací tabulku s průměrnou složitostí O(1).
+
+11. Immutable tuple může obsahovat mutable list.
+Odpověď: ANO
+Vysvětlení: Tuple je immutable v tom smyslu, že nelze měnit jeho odkazované prvky. Samotné prvky však mohou být mutable objekty (např. list) a jejich vnitřní stav měnit lze.
+
+12. Jestliže potřebujeme zachovat počet výskytů každé hodnoty, převedení list na set může způsobit ztrátu.
+Odpověď: ANO
+Vysvětlení: Konverze na set odstraní všechny duplicitní prvky. Informace o tom, kolikrát se daná hodnota v původním listu vyskytovala, se tím ztratí.
+
+13. Změna vnitřního list uloženého uvnitř tuple znamená, že jsme změnili samotný tuple.
+Odpověď: NE
+Vysvětlení: Odkaz uložený v tuple se nezměnil (ukazuje stále na stejný objekt v paměti). Měnil se pouze stav odkazovaného objektu, nikoli struktura nebo reference samotného tuple.
+
+14. Pokud vytvoříme dvě kolekce se stejným obsahem, musí mít také stejný datový typ.
+Odpověď: NE
+Vysvětlení: Můžeme mít například list `[1, 2, 3]`, tuple `(1, 2, 3)` a set `{1, 2, 3}`. Všechny mají stejné hodnoty prvků, ale jedná se o různé datové typy.
+
+15. list může reprezentovat data, které set reprezentovat nedokáže.
+Odpověď: ANO
+Vysvětlení: List dokáže reprezentovat duplicity, přesně definované pořadí prvků a nehashovatelné objekty (např. vnořené seznamy), což set neumí.
+
+16. Dvě různé položky v dictionary mohou mít stejný klíč.
+Odpověď: NE
+Vysvětlení: Klíče v dictionary musí být unikátní. Pokud přiřadíme hodnotu k již existujícímu klíči, původní hodnota bude přepsána.
+
+17. set při několika spuštěních vypíše prvky ve stejném pořadí.
+Odpověď: NE
+Vysvětlení: Množina neuzavírá záruku na konkrétní pořadí prvků. V závislosti na hashování a nastavení prostředí (např. PYTHONHASHSEED) se pořadí při různých spuštěních může měnit.
+
+18. tuple je vždy vhodnější než list, pokud během programu neplánujeme přidávat ani odebírat prvky.
+Odpověď: NE
+Vysvětlení: Pokud potřebujeme měnit hodnoty jednotlivých prvků na existujících pozicích (mutabilita) nebo pracovat s rozhraním, které vyžaduje list, je list vhodnější i bez přidávání/odebírání.
+
+19. Převedením list na set a zpět na list může změnit informaci uloženou v původním list.
+Odpověď: ANO
+Vysvětlení: Převedením na set se ztratí případné duplicity a může se změnit původní pořadí prvků. Při převodu zpět na list již původní vlastnosti neobnovíme.
+
+20. Dvě kolekce mohou obsahovat stejné hodnoty, ale kvůli rozdílnému významu pořadí reprezentovat odlišnou informaci.
+Odpověď: ANO
+Vysvětlení: Seznamy `[1, 2]` a `[2, 1]` obsahují stejné hodnoty, ale reprezentují jiné pořadí (např. výsledková listina, souřadnice X a Y atd.).
+
+21. Máme-li dvě kolekce a a b a platí že a == b je True, lze jednu proměnnou vždy bezpečně nahradit druhou bez jakékoli změny dalšího chování programu.
+Odpověď: NE
+Vysvětlení: Pokud jde o dvě různé instance v paměti (`a is not b`), modifikace jedné kolekce se neprojeví v druhé. Pokud bychom je sloučili do jedné proměnné, modifikace by vedla k odlišnému chování.
+
+22. Máme-li dvě kolekce a a b a platí, že a is b je True, změna objektu přes a může být pozorovatelná také přes b.
+Odpověď: ANO
+Vysvětlení: `a is b` říká, že proměnné `a` i `b` odkazují na přesně tentýž objekt v paměti. Jakákoliv změna provedená přes `a` se okamžitě projeví i při přístupu přes `b`.
+
+23. string se z hlediska indexování v některých ohledech chová podobně jako list.
+Odpověď: ANO
+Vysvětlení: Řetězec je sekvence znaků a podporuje přístup přes indexy (např. `s[0]`), záporné indexy, výřezy (slicing) i funkci `len()`.
+
+24. Pokud potřebujeme najít prvek podle jeho pořadového čísla, je set přirozenou náhradou za list.
+Odpověď: NE
+Vysvětlení: Množina (set) je neuspořádaná kolekce a nepodporuje indexování ani přístup podle pořadového čísla.
+
+25. dictionary může současně uchovávat informaci o identifikátoru položky i hodnotě, která k tomuto identifikátoru patří.
+Odpověď: ANO
+Vysvětlení: Slovník uchovává data ve formě dvojic klíč-hodnota (key-value), kde klíč slouží jako identifikátor a hodnota reprezentuje k němu příslušná data.
+
+26. Pokud list obsahuje deset odkazů na tentýž mutable objekt, změna tohoto objektu se může projevit na deseti místech list.
+Odpověď: ANO
+Vysvětlení: Všechny indexy v listu odkazují na stejnou instanci v paměti. Změna stavu této instance se projeví při přístupu z kteréhokoliv z těchto indexů.
+
+27. Přidání stejné hodnoty do set podruhé může být z pohledu obsahu set nerozeznatelné od situace, kdy jsme ji přidali pouze jednou.
+Odpověď: ANO
+Vysvětlení: Množina uplatňuje pravidlo unikátnosti. Pokud již hodnota v množině existuje, její opětovné přidání stav množiny nijak nezmění.
+
+28. Pokud chceme zjistit, kolikrát se určitá hodnota vyskytla, samotný set nám tuto informaci obecně nezachová.
+Odpověď: ANO
+Vysvětlení: Set uchovává pouze informaci o přítomnosti prvku, nikoliv o četnosti jeho výskytu.
+
+29. tuple lze použít jako key v dictionary
+Odpověď: ANO
+Vysvětlení: Tuple je immutable a pokud obsahuje pouze nekonfliktní immutable prvky, je hashovatelný a lze jej použít jako klíč ve slovníku.
+
+30. Pokud kolekce neumožňuje změnit své prvky, znamená to automaticky, že všechny objekty dosažitelné přes její prvky jsou immutable.
+Odpověď: NE
+Vysvětlení: Například immutable `tuple` může obsahovat mutable `list`. Tuple neumí nahradit prvek jiným, ale vnitřní stav tohoto `list`u měnit lze.
+
+31. Dvě proměnné mohou při prvním porovnání obsahovat kolekce se stejným obsahem a po změně jedné z nich už stejný obsah mít nemusí.
+Odpověď: ANO
+Vysvětlení: Pokud jde o dvě samostatné instance (např. dva různé seznamy se stejnými hodnotami), úprava jednoho seznamu nezmění druhý seznam.
+
+32. Jestliže odstranění duplicit nezmění počet prvků list, můžeme z toho něco usuzovat o hodnotách jeho prvků.
+Odpověď: ANO
+Vysvětlení: Lze z toho usoudit, že všechny prvky v původním seznamu byly již od počátku unikátní.
+
+33. Pokud dva různé klíče v dictionary vedou ke stejné hodnotě, znamená to, že jedna z těchto položek musí být automaticky odstraněna.
+Odpověď: NE
+Vysvětlení: Slovník vyžaduje unikátnost klíčů, nikoli hodnot. Různé klíče mohou bez problému odkazovat na stejnou hodnotu.
+
+34. Vhodnost list, set nebo dictionary lze určit hlavně podle toho, kolik prvků chceme uložit.
+Odpověď: NE
+Vysvětlení: Vhodnost závisí na charakteru dat a operacích, které s nimi chceme provádět (např. vyhledávání, zachování pořadí, unikatnost, dvojice klíč-hodnota), nikoli na samotném počtu prvků.
+
+35. Pokud potřebujeme současně rychle ověřovat existenci hodnoty a zachovat všechny její opakované výskyty musíme zkombinovat alespoň dvě kolekce.
+Odpověď: ANO
+Vysvětlení: Samotný list zachová výskyty, ale vyhledávání je O(n). Samotný set má vyhledávání O(1), ale nezachová výskyty. Pro spojení obou výhod je nutné tyto kolekce zkombinovat (např. list + set nebo použít Counter / dict s počty).
+
+36. Změna pořadí prvků list může změnit význam uložených dat, i když množina obsažených hodnot zůstane stejná.
+Odpověď: ANO
+Vysvětlení: Pořadí prvků v listu má sémantický význam (např. posloupnost kroků, časová řada, stupně vítězů). Změna pořadí mění význam dat.
+
+37. To, že list a tuple podporují indexování, neznamená, že mají stejné možnosti změny obsahu.
+Odpověď: ANO
+Vysvětlení: List je mutable a umožňuje měnit prvky na pozicích (`a[0] = x`), přidávat a mazat prvky. Tuple je immutable a žádné z těchto změn neumožňuje.
+
+38. Pokud set a list obsahují na první pohled stejné hodnoty, nelze pouze z toho usoudit, že nesou stejnou informaci.
+Odpověď: ANO
+Vysvětlení: List nese navíc informaci o pořadí prvků a případně o jejich opakování, což set neukládá.
+
+39. in umožňuje vyhledávat v list i v set.
+Odpověď: ANO
+Vysvětlení: Operátor `in` je v Pythonu univerzální pro testování členství v kolekci a funguje jak pro `list`, tak pro `set`.
+
+40. Jestliže určitá operace nad set vyjde při jednom měření rychleji než stejná operace nad list, dokazuje to, že set bude rychlejší pro každý možný vstup.
+Odpověď: NE
+Vysvětlení: Jedno měření nedokazuje univerzální nadřazenost. Pro malé množství prvků (např. 2-3 prvky) může být režie množiny vyšší nebo srovnatelná se seznamem.
+
+41. Máme-li list a a set b obsahující stejné hodnoty, pak s rostoucím počtem prvků se může výrazně měnit poměr času potřebného pro ověření x in a a x in b.
+Odpověď: ANO
+Vysvětlení: Pro `list` roste čas lineárně O(n), pro `set` zůstává průměrně konstantní O(1). S rostoucím n poměr časů dramaticky roste ve prospěch `set`.
+
+42. Zdvojnásobíme-li počet prvků v list, zdvojnásobí se i čas potřebný pro každou operaci, kterou lze s list provést.
+Odpověď: NE
+Vysvětlení: Operace jako zjištění délky `len(a)` nebo přístup podle indexu `a[i]` mají konstantní časovou složitost O(1) a délka seznamu na ně nemá vliv.
+
+43. Hledání hodnoty, která v list není, má z hlediska asymptotické složitosti stejné nejhorší chování jako hledání hodnoty, která se nachází na jeho konci.
+Odpověď: ANO
+Vysvětlení: V obou případech musí lineární vyhledávání zkontrolovat všech n prvků v seznamu, takže asymptotická složitost je v obou případech O(n).
+
+44. Přístup k prvku pomocí známého indexu v list a hledání stejného prvku pomocí in mají stejnou asymptotickou časovou složitost.
+Odpověď: NE
+Vysvětlení: Přístup k prvku podle známého indexu má asymptotickou složitost O(1), zatímco vyhledání prvku pomocí operátoru `in` má složitost O(n).
+
+45. Kolekce jsou k ničemu, stačí umět list.
+Odpověď: NE
+Vysvětlení: Každý typ kolekce (list, tuple, set, dict) má specifické vlastnosti, rozhraní a časové složitosti vhodné pro různé typy úloh. Samotný list nedokáže efektivně pokrýt všechny potřeby.
