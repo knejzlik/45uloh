@@ -1,0 +1,15 @@
+from typing import Tuple
+
+def main() -> None:
+    data: Tuple[int, int, int] = (10, 20, 30)
+    print(f"Původní tuple: {data}")
+
+    try:
+        # Pokus o změnu prvku na indexu 0
+        data[0] = 99  # type: ignore
+    except TypeError as e:
+        print(f"Chyba při pokusu o změnu: {e}")
+        print("Závěr: Tuple je neměnný (immutable).")
+
+if __name__ == "__main__":
+    main()
