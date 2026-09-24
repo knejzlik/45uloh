@@ -1,9 +1,6 @@
-def main() -> None:
-    shared_object = {'status': 'ACTIVE'}
-    references_list = [shared_object] * 10
-    print(f"Před změnou: index 0 status = {references_list[0]['status']}")
-    references_list[0]['status'] = 'INACTIVE'
-    print(f"Po změně: index 9 status = {references_list[9]['status']}")
-    print('Závěr: Změna sdíleného mutable objektu se projevila na všech 10 místech v seznamu.')
-if __name__ == '__main__':
-    main()
+shared_object = {"status": "ACTIVE"}
+references_list = [shared_object] * 10
+
+print("Index 0 před změnami:", references_list[0]["status"])
+references_list[0]["status"] = "INACTIVE"
+print("Index 9 po změně na indexu 0:", references_list[9]["status"])
